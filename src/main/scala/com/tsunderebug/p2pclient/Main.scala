@@ -2,11 +2,14 @@ package com.tsunderebug.p2pclient
 
 import javafx.{scene => jfxs}
 
-import scala.collection.mutable
+import com.jfoenix.controls.{JFXButton, JFXListView, JFXTextField}
+import com.tsunderebug.p2pclient.control.Connection
+
+import scala.reflect.runtime.universe._
 import scalafx.application
 import scalafx.application.JFXApp
-import scalafx.scene.{Parent, Scene}
-import scalafxml.core.{DependenciesByType, FXMLLoader, FXMLView}
+import scalafx.scene.Scene
+import scalafxml.core.{DependenciesByType, FXMLView}
 
 object Main extends JFXApp {
 
@@ -17,7 +20,11 @@ object Main extends JFXApp {
         FXMLView(
           getClass.getResource("/fxml/main_menu.fxml"),
           new DependenciesByType(
-            Map()
+            Map(
+              typeOf[JFXButton] -> new JFXButton(),
+              typeOf[JFXTextField] -> new JFXTextField(),
+              typeOf[JFXListView[Connection]] -> new JFXListView[Connection]()
+            )
           )
         )
       )

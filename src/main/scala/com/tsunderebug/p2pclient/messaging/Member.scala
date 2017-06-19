@@ -23,4 +23,6 @@ class Member private (val ip: String, private var _nick: String) {
     Resource.writeNicks(m)
   }
 
+  override def toString: String = nick
+
 }

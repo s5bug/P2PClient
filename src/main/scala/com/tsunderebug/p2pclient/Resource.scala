@@ -25,7 +25,7 @@ object Resource {
     d.mkdirs()
     val f = new File(d, "nicks.json")
     f.createNewFile()
-    val mapper = new ObjectMapper()
+    val mapper = new ObjectMapper() with ScalaObjectMapper
     mapper.registerModule(DefaultScalaModule)
     mapper.writeValue(f, map)
   }
