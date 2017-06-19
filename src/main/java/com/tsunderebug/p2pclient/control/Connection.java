@@ -21,6 +21,7 @@ public class Connection extends BorderPane {
 						"/fxml/control/connection.fxml"
 				)
 		);
+		fxmlLoader.setRoot(this);
 		fxmlLoader.setController(this);
 
 		try {

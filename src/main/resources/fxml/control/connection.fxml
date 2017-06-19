@@ -6,25 +6,25 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane prefHeight="75.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root type="javafx.scene.layout.BorderPane" prefHeight="50.0" prefWidth="175.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <Text fx:id="nickname" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="200">
+      <Text fx:id="nickname" strokeType="OUTSIDE" strokeWidth="0.0" text="Nickname" textAlignment="CENTER" wrappingWidth="175.0">
          <font>
             <Font name="Roboto Bold" size="18.0" />
          </font>
          <VBox.margin>
-            <Insets top="25.0" />
+            <Insets top="5.0" />
          </VBox.margin>
       </Text>
    </center>
    <bottom>
-      <Text fx:id="ip" fill="#7f7f7f" strokeType="OUTSIDE" strokeWidth="0.0" text="IP Address" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="200.0">
+      <Text fx:id="ip" fill="#7f7f7f" strokeType="OUTSIDE" strokeWidth="0.0" text="IP Address" textAlignment="CENTER" wrappingWidth="175.0">
          <VBox.margin>
-            <Insets bottom="25.0" />
+            <Insets bottom="5.0" />
          </VBox.margin>
          <font>
             <Font name="Roboto" size="14.0" />
          </font>
       </Text>
    </bottom>
-</BorderPane>
+</fx:root>

@@ -2,6 +2,7 @@ package com.tsunderebug.p2pclient
 
 import javafx.{scene => jfxs}
 
+import scala.collection.mutable
 import scalafx.application
 import scalafx.application.JFXApp
 import scalafx.scene.{Parent, Scene}
