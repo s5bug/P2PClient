@@ -2,19 +2,16 @@ package com.tsunderebug.p2pclient.controller
 
 import java.net.InetAddress
 import javafx.beans.property.StringProperty
-import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXML
-import javafx.geometry.Pos
 import javafx.scene.control.Label
 import javafx.scene.input.MouseEvent
-import javafx.scene.layout.{BorderPane, StackPane, VBox}
+import javafx.scene.layout.StackPane
 
 import com.jfoenix.controls.JFXDialog.DialogTransition
 import com.jfoenix.controls.{JFXButton, JFXDialog, JFXListView, JFXTextField}
 import com.tsunderebug.p2pclient.control.Connection
 import com.tsunderebug.p2pclient.{messaging => msg}
 
-import scalafx.scene.text.Text
 import scalafxml.core.macros.sfxml
 
 @sfxml
