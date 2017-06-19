@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty
 import javafx.event.{ActionEvent, EventHandler}
 import javafx.fxml.FXML
 import javafx.geometry.Pos
+import javafx.scene.control.Label
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.{BorderPane, StackPane, VBox}
 
@@ -17,38 +18,37 @@ import scalafx.scene.text.Text
 import scalafxml.core.macros.sfxml
 
 @sfxml
-class MainMenu(@FXML private val rootpane: BorderPane,
-               @FXML private val list: JFXListView[Connection],
-               @FXML private val ip: JFXTextField,
-               @FXML private val port: JFXTextField,
-               @FXML private val connect: JFXButton,
-               @FXML private val changeport: JFXButton,
-               @FXML private val iptext: Text) {
+class MainMenu(
+                @FXML private val rootpane: StackPane,
+                @FXML private val list: JFXListView[Connection],
+                @FXML private val ip: JFXTextField,
+                @FXML private val port: JFXTextField,
+                @FXML private val connect: JFXButton,
+                @FXML private val changeport: JFXButton,
+                @FXML private val iptext: Label,
+                @FXML private val dialog: JFXDialog,
+                @FXML private val pchange: JFXTextField,
+                @FXML private val accept: JFXButton
+              ) {
 
 
-  val changePortDialog = new JFXDialog()
-  val t = new JFXTextField(msg.Connection.getPort.toString)
-  t.textProperty.addListener((observable, oldValue, _) => {
+  rootpane.getChildren.remove()
+
+  pchange.textProperty.addListener((observable, oldValue, _) => {
     if (!observable.asInstanceOf[StringProperty].get().matches("\\d{,5}")) {
       observable.asInstanceOf[StringProperty].setValue(oldValue)
     }
   })
-  val b = new JFXButton()
-  b.addEventFilter(MouseEvent.MOUSE_PRESSED, (event: MouseEvent) => {
-    msg.Connection.setPort(t.getText.toInt)
+  accept.setOnMouseClicked((_: MouseEvent) => {
+    msg.Connection.setPort(pchange.getText.toInt)
   })
-  val c = new VBox(
-    t,
-    b
-  )
-  c.alignmentProperty().setValue(Pos.CENTER)
-  changePortDialog.setContent(c)
 
   iptext.setText("Your local IP is: " + InetAddress.getLocalHost.getHostAddress + ":" + msg.Connection.getPort)
-  changeport.addEventHandler(ActionEvent.ACTION, (event: ActionEvent) => {
+  changeport.setOnMouseClicked((_: MouseEvent) => {
     println("pls")
-    changePortDialog.setTransitionType(DialogTransition.CENTER)
-    changePortDialog.show(rootpane.asInstanceOf[StackPane])
+    dialog.setTransitionType(DialogTransition.CENTER)
+    dialog.show(rootpane)
   })
+  println(changeport.getText)
 
 }
