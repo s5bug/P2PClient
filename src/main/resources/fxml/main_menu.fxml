@@ -1,23 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDialog?>
-<?import com.jfoenix.controls.JFXDialogLayout?>
-<?import com.jfoenix.controls.JFXListView?>
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.*?>
 <?import com.tsunderebug.p2pclient.control.Connection?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
-
-<StackPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsunderebug.p2pclient.controller.MainMenu">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<StackPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.121"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tsunderebug.p2pclient.controller.MainMenu">
 	<BorderPane>
 		<left>
 			<JFXListView fx:id="list" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-				<Connection ip="Go ahead and add one" nickname="No connections" />
+				<Connection ip="Go ahead and add one" nickname="No connections"/>
 			</JFXListView>
 		</left>
 		<center>
@@ -25,26 +20,30 @@
 				<top>
 					<Label style="-fx-padding: 25px; -fx-border-insets: 25px;" text="P2P Client" BorderPane.alignment="CENTER">
 						<font>
-							<Font name="Roboto Bold" size="48.0" />
+							<Font name="Roboto Bold" size="48.0"/>
 						</font>
 						<BorderPane.margin>
-							<Insets top="35.0" />
+							<Insets top="35.0"/>
 						</BorderPane.margin>
 					</Label>
 				</top>
 				<center>
 					<HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 						<children>
-							<Label style="-fx-padding: 5px; -fx-border-insets: 5px; -fx-background-insets: 5px;" text="Add a connection">
+							<Label style="-fx-padding: 5px; -fx-border-insets: 5px; -fx-background-insets: 5px;"
+							       text="Add a connection">
 								<font>
-									<Font name="Roboto" size="18.0" />
+									<Font name="Roboto" size="18.0"/>
 								</font>
 							</Label>
-							<JFXTextField fx:id="ip" promptText="IP Address" style="-fx-padding: 5px; -fx-border-insets: 5px;" />
-							<JFXTextField fx:id="port" prefWidth="70" promptText="15138" style="-fx-padding: 5px; -fx-border-insets: 5px;" />
-							<JFXButton alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="8.0" prefWidth="100" style="-fx-text-fill: WHITE; -fx-background-color: #5264AE;" text="CONNECT" textAlignment="CENTER">
+							<JFXTextField fx:id="ip" promptText="IP Address" style="-fx-padding: 5px; -fx-border-insets: 5px;"/>
+							<JFXTextField fx:id="port" prefWidth="70" promptText="15138"
+							              style="-fx-padding: 5px; -fx-border-insets: 5px;"/>
+							<JFXButton fx:id="connect" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="8.0"
+							           prefWidth="100" style="-fx-text-fill: WHITE; -fx-background-color: #5264AE;" text="CONNECT"
+							           textAlignment="CENTER">
 								<font>
-									<Font name="Roboto" size="14.0" />
+									<Font name="Roboto" size="14.0"/>
 								</font>
 							</JFXButton>
 						</children>
@@ -53,22 +52,25 @@
 				<bottom>
 					<HBox alignment="TOP_CENTER" prefHeight="100.0" BorderPane.alignment="CENTER">
 						<children>
-							<JFXButton fx:id="changeport" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" graphicTextGap="8.0" style="-fx-text-fill: WHITE; -fx-background-color: #5264AE;" text="CHANGE PORT" textAlignment="CENTER" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+							<JFXButton fx:id="changeport" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER"
+							           graphicTextGap="8.0" style="-fx-text-fill: WHITE; -fx-background-color: #5264AE;"
+							           text="CHANGE PORT" textAlignment="CENTER" xmlns="http://javafx.com/javafx/8.0.121"
+							           xmlns:fx="http://javafx.com/fxml/1">
 								<font>
-									<Font name="Roboto" size="14.0" />
+									<Font name="Roboto" size="14.0"/>
 								</font>
 							</JFXButton>
 							<Label fx:id="iptext" text="Your local IP is: " textAlignment="CENTER">
 								<font>
-									<Font name="Roboto" size="24.0" />
+									<Font name="Roboto" size="24.0"/>
 								</font>
 								<HBox.margin>
-									<Insets left="20.0" />
+									<Insets left="20.0"/>
 								</HBox.margin>
 							</Label>
 						</children>
 						<BorderPane.margin>
-							<Insets bottom="50.0" />
+							<Insets bottom="50.0"/>
 						</BorderPane.margin>
 					</HBox>
 				</bottom>
@@ -81,7 +83,7 @@
 				<Label>Change Port</Label>
 			</heading>
 			<body>
-				<JFXTextField fx:id="pchange" />
+				<JFXTextField fx:id="pchange"/>
 			</body>
 			<actions>
 				<JFXButton fx:id="accept">CHANGE</JFXButton>

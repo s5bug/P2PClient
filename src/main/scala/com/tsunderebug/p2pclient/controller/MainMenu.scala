@@ -14,7 +14,7 @@ import com.tsunderebug.p2pclient.{messaging => msg}
 
 import scalafxml.core.macros.sfxml
 
-@sfxml
+@sfxml(additionalControls=List("com.jfoenix.controls"))
 class MainMenu(
                 @FXML private val rootpane: StackPane,
                 @FXML private val list: JFXListView[Connection],
@@ -29,23 +29,30 @@ class MainMenu(
               ) {
 
 
-  rootpane.getChildren.remove()
+  rootpane.getChildren.remove(dialog)
+  connect.setDisable(true)
 
-  pchange.textProperty.addListener((observable, oldValue, _) => {
-    if (!observable.asInstanceOf[StringProperty].get().matches("\\d{,5}")) {
+  Seq(port, pchange) foreach(_.textProperty.addListener((observable, oldValue, _) => {
+    if (!observable.asInstanceOf[StringProperty].get().matches("""(6553[0-5]|655[0-2]\d|65[0-4]\d{2}|6[0-4]\d{3}|[0-5]\d{4}|\d{0,4})""")) {
       observable.asInstanceOf[StringProperty].setValue(oldValue)
     }
+  }))
+  ip.textProperty.addListener((observable, oldValue, _) => {
+    if(!observable.asInstanceOf[StringProperty].get().matches("""(25[0-5]|2[0-4]\d|[0-1]?\d{0,2})(\.(25[0-5]|2[0-4]\d|[0-1]?\d{0,2})){0,3}""".stripMargin)) {
+      observable.asInstanceOf[StringProperty].setValue(oldValue)
+    }
+    connect.setDisable(!observable.asInstanceOf[StringProperty].get().matches("""(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"""))
   })
   accept.setOnMouseClicked((_: MouseEvent) => {
     msg.Connection.setPort(pchange.getText.toInt)
+    iptext.setText("Your local IP is: " + InetAddress.getLocalHost.getHostAddress + ":" + msg.Connection.getPort)
+    rootpane.getChildren.remove(dialog)
   })
 
   iptext.setText("Your local IP is: " + InetAddress.getLocalHost.getHostAddress + ":" + msg.Connection.getPort)
   changeport.setOnMouseClicked((_: MouseEvent) => {
-    println("pls")
     dialog.setTransitionType(DialogTransition.CENTER)
     dialog.show(rootpane)
   })
-  println(changeport.getText)
 
 }

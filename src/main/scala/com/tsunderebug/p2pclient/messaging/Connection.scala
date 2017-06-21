@@ -34,7 +34,7 @@ object Connection {
       f.createNewFile()
     }
     val w = new FileWriter(f)
-    w.write(v)
+    w.write(v.toString)
     w.close()
   }
 
