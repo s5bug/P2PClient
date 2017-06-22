@@ -1,4 +1,4 @@
-package com.tsunderebug.p2pclient.messaging
+package com.tsunderebug.p2pclient.client
 
 import java.io.{File, FileWriter}
 
@@ -42,10 +42,9 @@ object Connection {
     val d = new File(System.getProperty("user.home"), ".p2pclient/" + ips.mkString(" "))
     d.mkdirs()
     val f = new File(d, "connection.json")
-    f.createNewFile()
     if (!f.exists()) {
       f.createNewFile()
-      val m = new ObjectMapper()
+      val m = new ObjectMapper() with ScalaObjectMapper
       m.registerModule(DefaultScalaModule)
       m.writeValue(f, new Connection(ips))
     }
@@ -54,9 +53,17 @@ object Connection {
     mapper.readValue[Connection](f)
   }
 
+  def connections: Array[Connection] = {
+    val d = new File(System.getProperty("user.home"), ".p2pclient")
+    d.mkdirs()
+    d.listFiles().filter(_.isDirectory).map((f: File) => Connection.apply(f.getName.split(" ")))
+  }
+
 }
 
 class Connection private(ips: Array[String]) {
+
+  def this() = this(new Array[String](0))
 
   val members: Array[Member] = ips.map(Member.apply)
   val name: String = members.mkString(", ")

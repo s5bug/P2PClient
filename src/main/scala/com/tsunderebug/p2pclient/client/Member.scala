@@ -1,4 +1,4 @@
-package com.tsunderebug.p2pclient.messaging
+package com.tsunderebug.p2pclient.client
 
 import com.tsunderebug.p2pclient.Resource
 

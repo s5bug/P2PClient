@@ -15,6 +15,8 @@ public class Connection extends BorderPane {
 	@FXML
 	private Text ip;
 
+	private com.tsunderebug.p2pclient.client.Connection conn;
+
 	public Connection() {
 		FXMLLoader fxmlLoader = new FXMLLoader(
 				getClass().getResource(
@@ -29,6 +31,13 @@ public class Connection extends BorderPane {
 		} catch (IOException exception) {
 			throw new RuntimeException(exception);
 		}
+	}
+
+	public Connection(String nick, String ip) {
+		this();
+		setNickname(nick);
+		setIp(ip);
+		conn = com.tsunderebug.p2pclient.client.Connection.apply(new String[]{ip});
 	}
 
 	public String getNickname() {
@@ -55,4 +64,7 @@ public class Connection extends BorderPane {
 		return ip.textProperty();
 	}
 
+	public com.tsunderebug.p2pclient.client.Connection getConn() {
+		return conn;
+	}
 }

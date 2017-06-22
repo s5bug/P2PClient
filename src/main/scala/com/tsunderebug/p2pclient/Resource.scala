@@ -14,7 +14,9 @@ object Resource {
     val d = new File(System.getProperty("user.home"), ".p2pclient")
     d.mkdirs()
     val f = new File(d, "nicks.json")
-    f.createNewFile()
+    if(!f.exists()) {
+      writeNicks(mutable.Map[String, String]())
+    }
     val mapper = new ObjectMapper() with ScalaObjectMapper
     mapper.registerModule(DefaultScalaModule)
     mapper.readValue[mutable.Map[String, String]](f)
